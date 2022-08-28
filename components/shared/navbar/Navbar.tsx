@@ -2,7 +2,7 @@
 import { Fragment, useEffect, useState } from 'react'
 import { Popover, Transition } from '@headlessui/react'
 import { faConnectdevelop, faGoogle } from '@fortawesome/free-brands-svg-icons';
-import { useAuth } from '../../context/AuthContext'
+import { useAuth } from '../../../context/AuthContext'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
     BookmarkAltIcon,
@@ -27,7 +27,8 @@ import { ChevronDownIcon, PaperAirplaneIcon, WifiIcon } from '@heroicons/react/s
 import Link from 'next/link'
 import { faClose, faStarshipFreighter } from '@fortawesome/pro-solid-svg-icons';
 import { onAuthStateChanged } from 'firebase/auth';
-import { auth } from '../../lib/firebase';
+import { auth } from '../../../lib/firebase';
+import NavBarLink from './components/NavBarLink';
 
 
 const solutions = [
@@ -134,30 +135,16 @@ function Navbar({page}: {page: string}) {
                     </div>
                     <div className="hidden md:flex-1 md:flex md:items-center md:justify-between">
                         <Popover.Group as="nav" className="flex space-x-10 align-middle items-center">
-                            <Link href={'/professional/list'}>
-                                <a className={
-                                    `
-                                    text-base
-                                    font-medium
-                                     px-3
-                                    ${ page == 'professionals' ? "text-indigo-600 hover:text-indigo-900" : "text-gray-500 hover:text-gray-900" }
-                                    `
-                                }>
-                                    Devs
-                                </a>
-                            </Link>
-                            <Link href={'/offer/list'}>
-                                <a className={
-                                    `
-                                    text-base
-                                    font-medium
-                                     px-3
-                                    ${page == 'offers' ? "text-indigo-600 hover:text-indigo-900" : "text-gray-500 hover:text-gray-900" }
-                                    `
-                                }>
-                                    Empresas
-                                </a>
-                            </Link>
+                            <NavBarLink 
+                                link='/professional/list'
+                                text='Devs'
+                                highlight={page === 'professionals'}
+                            />
+                            <NavBarLink 
+                                link='/offer/list'
+                                text='Empresas'
+                                highlight={page === 'offers'}
+                            />
                             <Popover>
                                 {({ open }) => (
                                     <>
@@ -332,14 +319,16 @@ function Navbar({page}: {page: string}) {
                         </div>
                         <div className="py-6 px-5">
                             <div className="grid grid-cols-2 gap-4">
-                                <a href="#" className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700">
-                                    Devs
-                                </a>
-
-                                <a href="#" className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700">
-                                    Empresas
-                                </a>
-                                
+                                <NavBarLink
+                                    link='/professional/list'
+                                    text='Devs'
+                                    classOverwrite='rounded-md text-base font-medium text-gray-900 hover:text-gray-700'
+                                />
+                                <NavBarLink
+                                    link='/offer/list'
+                                    text='Empresas'
+                                    classOverwrite='rounded-md text-base font-medium text-gray-900 hover:text-gray-700'
+                                />
                             </div>
                             <div className="mt-6">
                                 <a
