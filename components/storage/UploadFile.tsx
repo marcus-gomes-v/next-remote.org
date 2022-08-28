@@ -1,8 +1,8 @@
-import { getApp } from "firebase/app";
-import { getStorage, ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
+import { getApp } from 'firebase/app';
+import { getStorage, ref, getDownloadURL, uploadBytesResumable } from 'firebase/storage';
 
 
-import { useRef, useState } from "react";
+import { useRef, useState } from 'react';
 
 const UploadFile = ({ setImageCallback }: { setImageCallback: any }) => {
     const inputEl = useRef(null) as any
@@ -15,15 +15,15 @@ const UploadFile = ({ setImageCallback }: { setImageCallback: any }) => {
     }
 
     function uploadFile() {
-        var file = inputEl.current.files[0]
+        const file = inputEl.current.files[0]
         if (!file) return;
 
         const firebaseApp = getApp();
-        const storage = getStorage(firebaseApp, "gs://remoteu-org.appspot.com");
+        const storage = getStorage(firebaseApp, 'gs://remoteu-org.appspot.com');
         const storageRef = ref(storage, `files/${file.name}`);
         const uploadTask = uploadBytesResumable(storageRef, file);
 
-        uploadTask.on("state_changed",
+        uploadTask.on('state_changed',
             (snapshot) => {
                 const progress =
                     Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
@@ -43,9 +43,9 @@ const UploadFile = ({ setImageCallback }: { setImageCallback: any }) => {
 
     return (
         <>
-            <progress value={value} max="100"></progress>
+            <progress value={value} max='100'></progress>
             <input
-                type="file"
+                type='file'
                 onChange={uploadFile}
                 ref={inputEl}
             />

@@ -3,9 +3,9 @@ import Head from 'next/head'
 import Layout from '../components/layout'
 
 const Home: NextPage = () => {
-  
+
   return (
-    <Layout page='home'>    
+    <Layout page='home'>
       <Head>
         <title>The Devs Space</title>
         <link rel="icon" href="/favicon.ico" />
@@ -17,7 +17,7 @@ const Home: NextPage = () => {
           remoteu.org
         </a>
       </h1>
-    </Layout> 
+    </Layout>
 
   )
 }

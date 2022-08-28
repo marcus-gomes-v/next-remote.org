@@ -1,18 +1,18 @@
-import { createContext, useContext, ReactNode, useState } from "react";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { auth } from "../lib/firebase";
-import { useEffect } from "react";
-import { onAuthStateChanged } from "firebase/auth";
-import router from "next/router";
-import { session } from "../lib/session";
-import useUser from "../lib/useUser";
-import fetchJson, { FetchError } from '../lib/fetchJson'
+import { createContext, useContext, ReactNode, useState } from 'react';
+import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { auth } from '../lib/firebase';
+import { useEffect } from 'react';
+import { onAuthStateChanged } from 'firebase/auth';
+import router from 'next/router';
+import { session } from '../lib/session';
+import useUser from '../lib/useUser';
+import fetchJson from '../lib/fetchJson'
 
 const authContextDefaultValues: authContextType = {
     useSession: {},
     user: null,
-    login: () => { },
-    logout: () => { },
+    login: () => { return; },
+    logout: () => { return; },
 };
 
 const AuthContext = createContext<authContextType|any>(authContextDefaultValues);
@@ -57,12 +57,12 @@ export function AuthProvider({ children }: Props) {
             })
             .catch((error) => {
                 // Handle Errors here.
-                const errorCode = error.code;
-                const errorMessage = error.message;
+                const _errorCode = error.code;
+                const _errorMessage = error.message;
                 // The email of the user's account used.
-                const email = error.email;
+                const _email = error.email;
                 // The AuthCredential type that was used.
-                const credential = GoogleAuthProvider.credentialFromError(error);
+                const _credential = GoogleAuthProvider.credentialFromError(error);
                 setSession(undefined)
                 setUser(false);
             });
@@ -78,7 +78,7 @@ export function AuthProvider({ children }: Props) {
         login,
         logout,
     };
-    
+
 
     useEffect(() => {
         onAuthStateChanged(auth, async (user: any) => {

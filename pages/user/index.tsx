@@ -1,11 +1,10 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import Layout from '../../components/layout';
-import { useAuth } from '../../context/AuthContext';
 import { session } from '../../lib/session';
 
 const LoggedIn = () => {
-  const [user, setUser] = useState<user>() 
+  const [user, setUser] = useState<user>()
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
@@ -17,7 +16,7 @@ const LoggedIn = () => {
     }
     setLoading(false)
   }, []);
-  
+
   return (
     <Layout page='user'>
       <div>
@@ -29,7 +28,7 @@ const LoggedIn = () => {
             <>
               <div>
                 {<div>Congratulations {user?.displayName}! You are logged in.</div> }
-                <Link href={"/user/offer/list"}>
+                <Link href={'/user/offer/list'}>
                   <a>
                     Vagas
                   </a>
