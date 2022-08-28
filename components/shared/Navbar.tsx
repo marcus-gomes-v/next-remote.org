@@ -28,6 +28,7 @@ import Link from 'next/link'
 import { faClose, faStarshipFreighter } from '@fortawesome/pro-solid-svg-icons';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../../lib/firebase';
+import { useTranslation } from 'react-i18next';
 
 
 const solutions = [
@@ -97,12 +98,10 @@ function classNames(...classes: any) {
 }
 
 function Navbar({page}: {page: string}) {
-
-    const { login, logout } = useAuth();
-    
+    const { t } = useTranslation();
+    const { login, logout } = useAuth();    
     const [loading, setLoading] = useState(false);
-
-    const [ isLogged, setIsLogged ] = useState(false)
+    const [ isLogged, setIsLogged ] = useState(false);
 
     useEffect( () => {
         setLoading(true)
@@ -123,7 +122,7 @@ function Navbar({page}: {page: string}) {
                         <a className="flex font-bold text-indigo-600 text-lg group">
                             <span className="sr-only">RemoteU.org</span>
                             <FontAwesomeIcon icon={faConnectdevelop} className="h-7 w-7 mr-1 group-hover:animate-spin-fast" aria-hidden="true" />
-                            Remoteu.Org
+                            {t('common.remoteuOrg')}
                         </a>
                     </Link>
                     <div className="-mr-2 -my-2 md:hidden">
@@ -143,7 +142,7 @@ function Navbar({page}: {page: string}) {
                                     ${ page == 'professionals' ? "text-indigo-600 hover:text-indigo-900" : "text-gray-500 hover:text-gray-900" }
                                     `
                                 }>
-                                    Devs
+                                    {t('navBar.devs')}
                                 </a>
                             </Link>
                             <Link href={'/offer/list'}>
@@ -155,7 +154,7 @@ function Navbar({page}: {page: string}) {
                                     ${page == 'offers' ? "text-indigo-600 hover:text-indigo-900" : "text-gray-500 hover:text-gray-900" }
                                     `
                                 }>
-                                    Empresas
+                                    {t('navBar.companies')}
                                 </a>
                             </Link>
                             <Popover>
@@ -167,7 +166,7 @@ function Navbar({page}: {page: string}) {
                                                 'px-3 group bg-white rounded-md inline-flex items-center text-base font-medium border-2 border-transparent hover:text-gray-900 focus:text-white focus:bg-indigo-600 focus:outline-none focus:border-indigo-600 focus:rounded-md'
                                             )}
                                         >
-                                            <span>Sobre</span>
+                                            <span>{t('common.about')}</span>
                                             <ChevronDownIcon
                                                 className={classNames(
                                                     open ? 'text-gray-600' : 'text-gray-400',
@@ -206,7 +205,8 @@ function Navbar({page}: {page: string}) {
                                                                         <p className="mt-1 text-sm text-gray-500">{item.description}</p>
                                                                     </div>
                                                                     <p className="mt-2 text-sm font-medium text-indigo-600 lg:mt-4">
-                                                                        Saiba mais <span aria-hidden="true">&rarr;</span>
+                                                                        {t('common.knowMore')}
+                                                                        <span aria-hidden="true">&rarr;</span>
                                                                     </p>
                                                                 </div>
                                                             </div>
@@ -260,7 +260,7 @@ function Navbar({page}: {page: string}) {
                                     <FontAwesomeIcon
                                         icon={faClose}
                                         className="w-4 h-4 mr-2 group-hover:animate-spin" />
-                                    Logout
+                                    {t('login.logout')}
                                 </span>
                                 :
                                     <span className="
@@ -272,7 +272,7 @@ function Navbar({page}: {page: string}) {
                                     <FontAwesomeIcon
                                         icon={faGoogle}
                                         className="w-4 h-4 mr-2" />
-                                    Login com Google
+                                    {t('login.google')}
                                 </span>
                             }
                             </button>
@@ -333,11 +333,11 @@ function Navbar({page}: {page: string}) {
                         <div className="py-6 px-5">
                             <div className="grid grid-cols-2 gap-4">
                                 <a href="#" className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700">
-                                    Devs
+                                    {t('navBar.devs')}
                                 </a>
 
                                 <a href="#" className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700">
-                                    Empresas
+                                    {t('navBar.companies')}
                                 </a>
                                 
                             </div>
@@ -347,7 +347,7 @@ function Navbar({page}: {page: string}) {
                                     className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
                                 >
                                     <FontAwesomeIcon icon={faGoogle} />
-                                    Sign up
+                                    {t('common.signUp')}
                                 </a>
                             </div>
                         </div>
