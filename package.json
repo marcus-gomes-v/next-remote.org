@@ -3,7 +3,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "dependencies": {
     "@fortawesome/fontawesome-pro": "^6.1.1",
@@ -29,7 +31,11 @@
     "@types/dashify": "^1.0.1",
     "@types/node": "17.0.4",
     "@types/react": "17.0.38",
+    "@typescript-eslint/eslint-plugin": "^5.35.1",
+    "@typescript-eslint/parser": "^5.35.1",
     "autoprefixer": "^10.4.0",
+    "eslint": "^8.23.0",
+    "eslint-plugin-react": "^7.31.1",
     "postcss": "^8.4.5",
     "prettier": "^2.5.1",
     "prettier-plugin-tailwindcss": "^0.1.1",
