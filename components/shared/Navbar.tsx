@@ -7,8 +7,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
     BookmarkAltIcon,
     BriefcaseIcon,
-    ChartBarIcon,
-    CheckCircleIcon,
     CursorClickIcon,
     DesktopComputerIcon,
     GlobeAltIcon,
@@ -23,9 +21,9 @@ import {
     ViewGridIcon,
     XIcon,
 } from '@heroicons/react/outline'
-import { ChevronDownIcon, PaperAirplaneIcon, WifiIcon } from '@heroicons/react/solid'
+import { ChevronDownIcon, WifiIcon } from '@heroicons/react/solid'
 import Link from 'next/link'
-import { faClose, faStarshipFreighter } from '@fortawesome/pro-solid-svg-icons';
+import { faClose } from '@fortawesome/pro-solid-svg-icons';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../../lib/firebase';
 
@@ -116,14 +114,14 @@ function Navbar({page}: {page: string}) {
     
     return (
         <Popover className="relative bg-white">
-            <div className="absolute inset-0 shadow z-30 pointer-events-none" aria-hidden="true" />
+            <div className="absolute inset-0 z-30 pointer-events-none" aria-hidden="true" />
             <div className="relative z-20">
-                <div className="max-w-7xl mx-auto flex justify-between items-center px-4 py-5 sm:px-6 sm:py-4 lg:px-7 md:justify-start md:space-x-10">
+                <div className="max-w-7xl mx-auto flex px-4 py-5 sm:px-6 sm:py-4 lg:px-7  md:justify-between md:space-x-10">
                     <Link href={'/'}>
-                        <a className="flex font-bold text-indigo-600 text-lg group">
+                        <a className=" p-2 flex font-bold text-indigo-600 text-lg group">
                             <span className="sr-only">RemoteU.org</span>
                             <FontAwesomeIcon icon={faConnectdevelop} className="h-7 w-7 mr-1 group-hover:animate-spin-fast" aria-hidden="true" />
-                            Remoteu.Org
+                            RemoteU.Org
                         </a>
                     </Link>
                     <div className="-mr-2 -my-2 md:hidden">
@@ -132,30 +130,28 @@ function Navbar({page}: {page: string}) {
                             <MenuIcon className="h-6 w-6" aria-hidden="true" />
                         </Popover.Button>
                     </div>
-                    <div className="hidden md:flex-1 md:flex md:items-center md:justify-between">
+                    <div className="hidden font-normal text-sm md:flex md:ml-5">
                         <Popover.Group as="nav" className="flex space-x-10 align-middle items-center">
                             <Link href={'/professional/list'}>
                                 <a className={
                                     `
-                                    text-base
-                                    font-medium
                                      px-3
-                                    ${ page == 'professionals' ? "text-indigo-600 hover:text-indigo-900" : "text-gray-500 hover:text-gray-900" }
+                                    ${ page == 'professionals' ? "text-indigo-600  border-l-indigo-600 border-l-4 hover:text-indigo-900" : "border-l-2 text-gray-500 hover:text-gray-900" }
+                                     hover:border-l-indigo-600 hover:border-l-4
                                     `
                                 }>
-                                    Devs
+                                    FOR DEVELOPERS
                                 </a>
                             </Link>
                             <Link href={'/offer/list'}>
                                 <a className={
                                     `
-                                    text-base
-                                    font-medium
                                      px-3
-                                    ${page == 'offers' ? "text-indigo-600 hover:text-indigo-900" : "text-gray-500 hover:text-gray-900" }
+                                    ${page == 'offers' ? "text-indigo-600  border-l-indigo-600 border-l-4 hover:text-indigo-900" : "border-l-2 text-gray-500 hover:text-gray-900" }
+                                     hover:border-l-indigo-600 hover:border-l-4
                                     `
                                 }>
-                                    Empresas
+                                    FOR COMPANIES
                                 </a>
                             </Link>
                             <Popover>
@@ -163,15 +159,14 @@ function Navbar({page}: {page: string}) {
                                     <>
                                         <Popover.Button
                                             className={classNames(
-                                                open ? 'text-gray-900' : 'text-gray-500',
-                                                'px-3 group bg-white rounded-md inline-flex items-center text-base font-medium border-2 border-transparent hover:text-gray-900 focus:text-white focus:bg-indigo-600 focus:outline-none focus:border-indigo-600 focus:rounded-md'
+                                                ' text-gray-500 px-3 group inline-flex  hover:text-gray-900 focus:text-indigo-600 border-l-2 focus:border-l-indigo-600 focus:border-l-4 hover:border-l-indigo-600 hover:border-l-4'
                                             )}
                                         >
-                                            <span>Sobre</span>
+                                            ABOVE THE NOISE
                                             <ChevronDownIcon
                                                 className={classNames(
                                                     open ? 'text-gray-600' : 'text-gray-400',
-                                                    'ml-2 h-5 w-5 group-hover:text-gray-500 group-focus:text-white'
+                                                    'ml-2 h-5 w-5 group-hover:text-gray-500 group-focus:text-indigo-600'
                                                 )}
                                                 aria-hidden="true"
                                             />
@@ -234,7 +229,7 @@ function Navbar({page}: {page: string}) {
                                 )}
                             </Popover>
                         </Popover.Group>
-                        <div className="flex items-center md:ml-12">
+                        <div className="flex items-center">
                             <button
                                 onClick={!loading && isLogged ? logout : login}
                                 className={`
@@ -242,39 +237,34 @@ function Navbar({page}: {page: string}) {
                                     ml-8
                                     px-4
                                     py-2
-                                    border
-                                    border-transparent
-                                    rounded-md
-                                    shadow-sm
                                     text-base
                                     font-medium
                                     text-white
                                     ${!loading && isLogged ? "bg-red-600 hover:bg-red-700" : "bg-indigo-600 hover:bg-indigo-700"}
                                 `}
                             >
-                            {!loading && isLogged ? 
+                                {!loading && isLogged ? 
                                     <span className='
                                         inline-flex
                                         items-center
                                         justify-center'>
-                                    <FontAwesomeIcon
-                                        icon={faClose}
-                                        className="w-4 h-4 mr-2 group-hover:animate-spin" />
-                                    Logout
-                                </span>
-                                :
+                                        <FontAwesomeIcon
+                                            icon={faClose}
+                                            className="w-4 h-4 mr-2 group-hover:animate-spin" />
+                                        Logout
+                                    </span>
+                                    :
                                     <span className="
                                         inline-flex
                                         items-center
                                         justify-center 
-                                        group-hover:text-yellow-400
                                         group-hover:animate-pulse" >
-                                    <FontAwesomeIcon
-                                        icon={faGoogle}
-                                        className="w-4 h-4 mr-2" />
-                                    Login com Google
-                                </span>
-                            }
+                                        <FontAwesomeIcon
+                                            icon={faGoogle}
+                                            className="w-4 h-4 mr-2" />
+                                        Login
+                                    </span>
+                                }
                             </button>
                         </div>
                     </div>
