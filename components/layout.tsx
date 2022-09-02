@@ -6,7 +6,7 @@ export default function Layout({ children, page }: { children: React.ReactNode, 
   const siteTitle = "Remoteu.org"
 
   return (
-   <div>
+    <div className="min-h-screen">
       <Head>
         <meta
           name="description"
