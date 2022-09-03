@@ -116,9 +116,9 @@ function Navbar({page}: {page: string}) {
         <Popover className="relative bg-white">
             <div className="absolute inset-0 z-30 pointer-events-none" aria-hidden="true" />
             <div className="relative z-20">
-                <div className="max-w-7xl mx-auto flex px-4 py-5 sm:px-6 sm:py-4 lg:px-7  md:justify-between md:space-x-10">
+                <div className="max-w-7xl mx-auto flex px-4 sm:px-6 lg:px-7 md:justify-between md:space-x-10">
                     <Link href={'/'}>
-                        <a className=" p-2 flex font-bold text-indigo-600 text-lg group">
+                        <a className="flex align-middle items-center font-bold text-indigo-600 group content-center">
                             <span className="sr-only">RemoteU.org</span>
                             <FontAwesomeIcon icon={faConnectdevelop} className="h-7 w-7 mr-1 group-hover:animate-spin-fast" aria-hidden="true" />
                             RemoteU.Org
@@ -131,13 +131,23 @@ function Navbar({page}: {page: string}) {
                         </Popover.Button>
                     </div>
                     <div className="hidden font-normal text-sm md:flex md:ml-5">
-                        <Popover.Group as="nav" className="flex space-x-10 align-middle items-center">
+                        <Popover.Group as="nav" className="flex align-middle items-center">
                             <Link href={'/professional/list'}>
                                 <a className={
                                     `
-                                     px-3
-                                    ${ page == 'professionals' ? "text-indigo-600  border-l-indigo-600 border-l-4 hover:text-indigo-900" : "border-l-2 text-gray-500 hover:text-gray-900" }
-                                     hover:border-l-indigo-600 hover:border-l-4
+                                    text-xs
+                                    border-l
+                                    p-6
+                                    ${page == 'professionals' ? `
+                                            bg-indigo-600
+                                            text-white  
+                                            border-indigo-300` :
+                                        `
+                                            text-gray-500 
+                                            hover:bg-indigo-600 
+                                            hover:text-white 
+                                            hover:border-indigo-300`
+                                        }
                                     `
                                 }>
                                     FOR DEVELOPERS
@@ -145,11 +155,21 @@ function Navbar({page}: {page: string}) {
                             </Link>
                             <Link href={'/offer/list'}>
                                 <a className={
-                                    `
-                                     px-3
-                                    ${page == 'offers' ? "text-indigo-600  border-l-indigo-600 border-l-4 hover:text-indigo-900" : "border-l-2 text-gray-500 hover:text-gray-900" }
-                                     hover:border-l-indigo-600 hover:border-l-4
-                                    `
+                                `
+                                    text-xs
+                                    border-l
+                                    p-6
+                                    ${page == 'offers' ? `
+                                        bg-indigo-600
+                                        text-white  
+                                        border-indigo-300` : 
+                                        `
+                                        text-gray-500 
+                                        hover:bg-indigo-600 
+                                        hover:text-white 
+                                        hover:border-indigo-300`
+                                    }
+                                `
                                 }>
                                     FOR COMPANIES
                                 </a>
@@ -158,15 +178,26 @@ function Navbar({page}: {page: string}) {
                                 {({ open }) => (
                                     <>
                                         <Popover.Button
-                                            className={classNames(
-                                                ' text-gray-500 px-3 group inline-flex  hover:text-gray-900 focus:text-indigo-600 border-l-2 focus:border-l-indigo-600 focus:border-l-4 hover:border-l-indigo-600 hover:border-l-4'
-                                            )}
+                                            className={classNames(`
+                                                group
+                                                border-x 
+                                                text-xs
+                                                p-6
+                                                inline-flex  
+                                                text-gray-500 
+                                                hover:bg-indigo-600
+                                                hover:text-white 
+                                                hover:border-indigo-300
+                                                focus:bg-indigo-600
+                                                focus:text-white
+                                                focus:border-indigo-300
+                                            `)}
                                         >
                                             ABOVE THE NOISE
                                             <ChevronDownIcon
                                                 className={classNames(
                                                     open ? 'text-gray-600' : 'text-gray-400',
-                                                    'ml-2 h-5 w-5 group-hover:text-gray-500 group-focus:text-indigo-600'
+                                                    'ml-2 h-4 w-5 group-hover:text-white group-focus:text-white'
                                                 )}
                                                 aria-hidden="true"
                                             />
@@ -234,13 +265,19 @@ function Navbar({page}: {page: string}) {
                                 onClick={!loading && isLogged ? logout : login}
                                 className={`
                                     group
-                                    ml-8
-                                    px-4
-                                    py-2
+                                    px-6
                                     text-base
                                     font-medium
-                                    text-white
-                                    ${!loading && isLogged ? "bg-red-600 hover:bg-red-700" : "bg-indigo-600 hover:bg-indigo-700"}
+                                    ${!loading && isLogged ? `
+                                        text-red-600 
+                                        hover:bg-red-700 
+                                        hover:text-white 
+                                        border-solid 
+                                        border-red-600 
+                                        border-l` : 
+                                        `text-indigo-600 
+                                        hover:text-indigo-400
+                                    `}
                                 `}
                             >
                                 {!loading && isLogged ? 
