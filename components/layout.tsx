@@ -16,7 +16,7 @@ export default function Layout({ children, page }: { children: React.ReactNode, 
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <Navbar page={page} />
-      <main>{children}</main>
+      <main className="max-w-7xl mx-auto px-4 py-5 sm:px-6 sm:py-4 lg:px-7 md:space-x-10">{children}</main>
       <Footer></Footer>
    </div>
   )

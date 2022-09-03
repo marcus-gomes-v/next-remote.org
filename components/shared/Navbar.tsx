@@ -5,90 +5,48 @@ import { faConnectdevelop, faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { useAuth } from '../../context/AuthContext'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
-    BookmarkAltIcon,
-    BriefcaseIcon,
-    CursorClickIcon,
-    DesktopComputerIcon,
-    GlobeAltIcon,
-    InformationCircleIcon,
     MenuIcon,
-    NewspaperIcon,
-    OfficeBuildingIcon,
     PhoneIcon,
-    PlayIcon,
-    ShieldCheckIcon,
-    UserGroupIcon,
-    ViewGridIcon,
     XIcon,
 } from '@heroicons/react/outline'
 import { ChevronDownIcon, WifiIcon } from '@heroicons/react/solid'
 import Link from 'next/link'
-import { faClose } from '@fortawesome/pro-solid-svg-icons';
+import { faClose, faHouseLaptop, faEarthAfrica, faEye, faHandFist } from '@fortawesome/pro-solid-svg-icons';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../../lib/firebase';
 
 
+
 const solutions = [
     {
-        name: 'Engajamento',
-        description: 'Hoje em dia milhares de empresas buscam profissionais Brasileiros.',
+        name: 'Everywhere',
+        description: 'We deep believe the work should fit our lives, so we stands for remotely work.',
         href: '#',
-        icon: CursorClickIcon,
+        icon: faHouseLaptop,
     },
     {
-        name: 'Trabalho Remoto',
-        description: 'Hoje o mundo está mais conectado do que nunca, e fronteiras não importam mais.',
+        name: 'Everyone',
+        description: 'We are focus into shape a new future, cause together we can, join us, be the flow.',
         href: '#',
-        icon: WifiIcon,
+        icon: faHandFist,
     },
     { 
-        name: 'Segurança', 
-        description: "Nossa base é constante avaliada por uma comunidade de devs e entusiastas de tecnologia.", 
+        name: 'Transparency', 
+        description: "We believe in the world of transparency, cause solid relations are based on truth.", 
         href: '#', 
-        icon: ShieldCheckIcon 
+        icon: faEye 
     },
     {
-        name: 'Integrações',
-        description: "Conecte-se com todo um universo de empresas e profissonais dispostos a mudar o mundo.",
+        name: 'Connection',
+        description: "Our goal is connect people through the technology, being a bridge for the future.",
         href: '#',
-        icon: ViewGridIcon,
+        icon: faEarthAfrica,
     },
 ]
 const callsToAction = [
-    { name: 'Watch Demo', href: '#', icon: PlayIcon },
-    { name: 'Contact Sales', href: '+55333333333', icon: PhoneIcon },
+    { name: 'Contact Us', href: '+34658021441', icon: PhoneIcon },
 ]
-const company = [
-    { name: 'About', href: '#', icon: InformationCircleIcon },
-    { name: 'Customers', href: '#', icon: OfficeBuildingIcon },
-    { name: 'Press', href: '#', icon: NewspaperIcon },
-    { name: 'Careers', href: '#', icon: BriefcaseIcon },
-    { name: 'Privacy', href: '#', icon: ShieldCheckIcon },
-]
-const resources = [
-    { name: 'Community', href: '#', icon: UserGroupIcon },
-    { name: 'Partners', href: '#', icon: GlobeAltIcon },
-    { name: 'Guides', href: '#', icon: BookmarkAltIcon },
-    { name: 'Webinars', href: '#', icon: DesktopComputerIcon },
-]
-const blogPosts = [
-    {
-        id: 1,
-        name: 'Boost your conversion rate',
-        href: '#',
-        preview: 'Eget ullamcorper ac ut vulputate fames nec mattis pellentesque elementum. Viverra tempor id mus.',
-        imageUrl:
-            'https://images.unsplash.com/photo-1558478551-1a378f63328e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2849&q=80',
-    },
-    {
-        id: 2,
-        name: 'How to use search engine optimization to drive traffic to your site',
-        href: '#',
-        preview: 'Eget ullamcorper ac ut vulputate fames nec mattis pellentesque elementum. Viverra tempor id mus.',
-        imageUrl:
-            'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2300&q=80',
-    },
-]
+
 
 function classNames(...classes: any) {
     return classes.filter(Boolean).join(' ')
@@ -150,7 +108,7 @@ function Navbar({page}: {page: string}) {
                                         }
                                     `
                                 }>
-                                    FOR DEVELOPERS
+                                    DEVELOPERS
                                 </a>
                             </Link>
                             <Link href={'/offer/list'}>
@@ -171,7 +129,7 @@ function Navbar({page}: {page: string}) {
                                     }
                                 `
                                 }>
-                                    FOR COMPANIES
+                                    COMPANIES
                                 </a>
                             </Link>
                             <Popover>
@@ -223,7 +181,9 @@ function Navbar({page}: {page: string}) {
                                                             <div className="flex md:h-full lg:flex-col">
                                                                 <div className="flex-shrink-0">
                                                                     <span className="inline-flex items-center justify-center h-10 w-10 rounded-md bg-indigo-500 text-white sm:h-12 sm:w-12">
-                                                                        <item.icon className="h-6 w-6" aria-hidden="true" />
+                                                                        <FontAwesomeIcon
+                                                                            icon={item.icon}
+                                                                            className="fa-thin h-6 w-6 group-hover:animate-spin" aria-hidden="true" />
                                                                     </span>
                                                                 </div>
                                                                 <div className="ml-4 md:flex-1 md:flex md:flex-col md:justify-between lg:ml-0 lg:mt-4">
@@ -231,9 +191,9 @@ function Navbar({page}: {page: string}) {
                                                                         <p className="text-base font-medium text-gray-900">{item.name}</p>
                                                                         <p className="mt-1 text-sm text-gray-500">{item.description}</p>
                                                                     </div>
-                                                                    <p className="mt-2 text-sm font-medium text-indigo-600 lg:mt-4">
+                                                                    {/* <p className="mt-2 text-sm font-medium text-indigo-600 lg:mt-4">
                                                                         Saiba mais <span aria-hidden="true">&rarr;</span>
-                                                                    </p>
+                                                                    </p> */}
                                                                 </div>
                                                             </div>
                                                         </a>
@@ -270,11 +230,8 @@ function Navbar({page}: {page: string}) {
                                     font-medium
                                     ${!loading && isLogged ? `
                                         text-red-600 
-                                        hover:bg-red-700 
-                                        hover:text-white 
-                                        border-solid 
-                                        border-red-600 
-                                        border-l` : 
+                                        hover:text-red-500
+                                        border-solid ` : 
                                         `text-indigo-600 
                                         hover:text-indigo-400
                                     `}
@@ -348,7 +305,9 @@ function Navbar({page}: {page: string}) {
                                                 className="-m-3 flex items-center p-3 rounded-lg hover:bg-gray-50"
                                             >
                                                 <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-indigo-500 text-white sm:h-12 sm:w-12">
-                                                    <item.icon className="h-6 w-6" aria-hidden="true" />
+                                                    <FontAwesomeIcon
+                                                        icon={item.icon}
+                                                        className="fa-thin h-6 w-6 group-hover:animate-spin" aria-hidden="true" />
                                                 </div>
                                                 <div className="ml-4 text-base font-medium text-gray-900">{item.name}</div>
                                             </a>
