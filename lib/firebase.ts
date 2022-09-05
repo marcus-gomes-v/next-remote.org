@@ -10,7 +10,7 @@ const firebaseCredentials = {
   messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
   measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
-}
+};
 
 async function loadAnalytics(firebaseApp: any){
   const isSupportedAnalytics = await isSupported();
@@ -20,7 +20,7 @@ async function loadAnalytics(firebaseApp: any){
 
 if (!getApps().length) {
   const firebaseApp = initializeApp(firebaseCredentials);
-  loadAnalytics(firebaseApp)
+  loadAnalytics(firebaseApp);
 }
 
 export const auth = getAuth();

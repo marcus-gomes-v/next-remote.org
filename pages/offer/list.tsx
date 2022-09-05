@@ -1,10 +1,10 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
+import type { NextPage } from 'next';
+import Head from 'next/head';
 import Link from 'next/link';
-import Layout from '../../components/layout'
+import Layout from '../../components/layout';
 import db from '../../lib/db';
 
-import { faCalendar, faMapPin, faUserCircle } from '@fortawesome/pro-solid-svg-icons'
+import { faCalendar, faMapPin, faUserCircle } from '@fortawesome/pro-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
@@ -77,8 +77,8 @@ const Offers: NextPage = (props: any) => {
 
     </Layout>
 
-  )
-}
+  );
+};
 
 export const getStaticProps = async () => {
   const offers = await db.collection('offers').orderBy('created', 'desc').get();
@@ -89,8 +89,8 @@ export const getStaticProps = async () => {
   return {
     props: { offersData },
     revalidate: 10
-  }
-}
+  };
+};
 
 export default Offers;
 

@@ -17,6 +17,7 @@ module.exports = {
     '!.prettierrc.js',
   ],
   rules: {
+    'semi': ['error', 'always'],
     'eol-last': ['error', 'always'],
     'no-trailing-spaces': 'error',
     'no-multi-spaces': 'warn',

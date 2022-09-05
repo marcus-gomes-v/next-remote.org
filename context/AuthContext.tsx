@@ -6,7 +6,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 import router from 'next/router';
 import { session } from '../lib/session';
 import useUser from '../lib/useUser';
-import fetchJson from '../lib/fetchJson'
+import fetchJson from '../lib/fetchJson';
 
 const authContextDefaultValues: authContextType = {
     useSession: {},
@@ -30,7 +30,7 @@ export function AuthProvider({ children }: Props) {
     const { mutateUser } = useUser({
         redirectTo: '/user',
         redirectIfFound: false,
-    })
+    });
 
     const [ useSession, setSession ] = useState<user>();
     const [ user, setUser ] = useState<boolean|null>(null);
@@ -49,8 +49,8 @@ export function AuthProvider({ children }: Props) {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(user),
-                })
-                setSession(user)
+                });
+                setSession(user);
                 setUser(true);
             })
             .catch((error) => {
@@ -61,7 +61,7 @@ export function AuthProvider({ children }: Props) {
                 const _email = error.email;
                 // The AuthCredential type that was used.
                 const _credential = GoogleAuthProvider.credentialFromError(error);
-                setSession(undefined)
+                setSession(undefined);
                 setUser(false);
             });
     };
@@ -89,17 +89,17 @@ export function AuthProvider({ children }: Props) {
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(user),
                     })
-                )
+                );
 
-                session.set('user', user)
-                user = user as user
-                setSession(user)
+                session.set('user', user);
+                user = user as user;
+                setSession(user);
                 if (router.pathname === '/')
                     router.push('/user');
             } else {
-                session.delete('user')
-                setSession(undefined)
-                router.push('/')
+                session.delete('user');
+                setSession(undefined);
+                router.push('/');
             }
         });
     }, []);

@@ -4,17 +4,17 @@ import Layout from '../../components/layout';
 import { session } from '../../lib/session';
 
 const LoggedIn = () => {
-  const [user, setUser] = useState<user>()
-  const [loading, setLoading] = useState(false)
+  const [user, setUser] = useState<user>();
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setLoading(true)
-    const oUser = session.get('user')
+    setLoading(true);
+    const oUser = session.get('user');
     if(oUser){
-      setUser(oUser)
-      console.log(oUser)
+      setUser(oUser);
+      console.log(oUser);
     }
-    setLoading(false)
+    setLoading(false);
   }, []);
 
   return (
@@ -38,7 +38,7 @@ const LoggedIn = () => {
         }
       </div>
     </Layout>
-  )
-}
+  );
+};
 
 export default LoggedIn;

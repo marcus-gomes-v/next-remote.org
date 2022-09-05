@@ -1,4 +1,4 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
+import type { NextApiRequest, NextApiResponse } from 'next';
 import db from '../../lib/db';
 
 type Data = {
@@ -26,4 +26,4 @@ export default async (
     } catch (e) {
         res.status(400).end();
     }
-}
+};

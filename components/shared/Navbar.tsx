@@ -1,20 +1,18 @@
-import { Fragment, useEffect, useState } from 'react'
-import { Popover, Transition } from '@headlessui/react'
+import { Fragment, useEffect, useState } from 'react';
+import { Popover, Transition } from '@headlessui/react';
 import { faConnectdevelop, faGoogle } from '@fortawesome/free-brands-svg-icons';
-import { useAuth } from '../../context/AuthContext'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useAuth } from '../../context/AuthContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     MenuIcon,
     PhoneIcon,
     XIcon,
-} from '@heroicons/react/outline'
-import { ChevronDownIcon, WifiIcon } from '@heroicons/react/solid'
-import Link from 'next/link'
+} from '@heroicons/react/outline';
+import { ChevronDownIcon, WifiIcon } from '@heroicons/react/solid';
+import Link from 'next/link';
 import { faClose, faHouseLaptop, faEarthAfrica, faEye, faHandFist } from '@fortawesome/pro-solid-svg-icons';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../../lib/firebase';
-
-
 
 const solutions = [
     {
@@ -41,18 +39,13 @@ const solutions = [
         href: '#',
         icon: faEarthAfrica,
     },
-]
+];
 const callsToAction = [
     { name: 'Contact Us', href: '+34658021441', icon: PhoneIcon },
-]
-const callsToAction = [
-    { name: 'Contact Us', href: '+34658021441', icon: PhoneIcon },
-]
-
-
+];
 
 function classNames(...classes: any) {
-    return classes.filter(Boolean).join(' ')
+    return classes.filter(Boolean).join(' ');
 }
 
 function Navbar({page}: {page: string}) {
@@ -61,14 +54,14 @@ function Navbar({page}: {page: string}) {
 
     const [loading, setLoading] = useState(false);
 
-    const [ isLogged, setIsLogged ] = useState(false)
+    const [ isLogged, setIsLogged ] = useState(false);
 
     useEffect( () => {
-        setLoading(true)
+        setLoading(true);
         onAuthStateChanged(auth, (user) => {
-            setLoading(false)
+            setLoading(false);
             if (user) {
-                setIsLogged(true)
+                setIsLogged(true);
             }
         });
     }, []);
@@ -344,7 +337,7 @@ function Navbar({page}: {page: string}) {
                 </Popover.Panel>
             </Transition>
         </Popover>
-    )
+    );
 }
 
 export default Navbar;

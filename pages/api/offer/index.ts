@@ -1,4 +1,4 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
+import type { NextApiRequest, NextApiResponse } from 'next';
 import db from '../../../lib/db';
 
 type Data = {
@@ -14,7 +14,7 @@ export default async (
         const offers = await db.collection('offers').get();
         const offersData = offers.docs.map(entry => entry.data());
 
-        console.log(req.body)
+        console.log(req.body);
 
         if (offersData.some(entry => entry.slug === slug)) {
             res.status(400).end();
@@ -28,4 +28,4 @@ export default async (
     } catch (e) {
         res.status(400).end();
     }
-}
+};

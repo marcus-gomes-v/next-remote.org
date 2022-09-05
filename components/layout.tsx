@@ -1,9 +1,9 @@
-import Head from 'next/head'
-import Footer from './shared/Footer'
-import Navbar from './shared/Navbar'
+import Head from 'next/head';
+import Footer from './shared/Footer';
+import Navbar from './shared/Navbar';
 
 export default function Layout({ children, page }: { children: React.ReactNode, page: string }) {
-  const siteTitle = 'Remoteu.org'
+  const siteTitle = 'Remoteu.org';
 
   return (
     <div className='min-h-screen'>
@@ -19,5 +19,5 @@ export default function Layout({ children, page }: { children: React.ReactNode, 
       <main className='max-w-7xl mx-auto px-4 py-5 sm:px-6 sm:py-4 lg:px-7 md:space-x-10'>{children}</main>
       <Footer></Footer>
    </div>
-  )
+  );
 }
