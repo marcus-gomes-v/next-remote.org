@@ -45,8 +45,6 @@ export function AuthProvider({ children }: Props) {
                 const token = credential?.accessToken;
                 // The signed-in user info.
                 const user = result.user as user;
-
-                console.log(user, token)
                 fetchJson('/api/login', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
@@ -70,6 +68,7 @@ export function AuthProvider({ children }: Props) {
 
     const logout = () => {
         auth.signOut();
+        router.push('/');
     };
 
     const value = {
