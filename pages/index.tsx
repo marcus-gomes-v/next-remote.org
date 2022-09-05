@@ -5,10 +5,10 @@ import HeroCard, { iHeroCard } from '../components/shared/HeroCard'
 
 const Home: NextPage = () => {
 
-const data: iHeroCard = {
-  title: 'We Rock the World',
-  subtitle: 'We shape the future'
-}
+  const data: iHeroCard = {
+    title: 'We Rock the World',
+    subtitle: 'We shape the future'
+  }
 
   return (
     <Layout page='home'>

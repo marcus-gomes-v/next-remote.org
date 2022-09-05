@@ -45,6 +45,10 @@ const solutions = [
 const callsToAction = [
     { name: 'Contact Us', href: '+34658021441', icon: PhoneIcon },
 ]
+const callsToAction = [
+    { name: 'Contact Us', href: '+34658021441', icon: PhoneIcon },
+]
+
 
 
 function classNames(...classes: any) {

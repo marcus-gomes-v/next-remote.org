@@ -21,7 +21,6 @@ export interface position {
   closeDateFull: Date,
 }
 
-
 const Offers: NextPage = (props: any) => {
   const { offersData } = props;
 
