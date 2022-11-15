@@ -1,10 +1,10 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
+import type { NextPage } from 'next';
+import Head from 'next/head';
 import Link from 'next/link';
-import Layout from '../../components/layout'
+import Layout from '../../components/layout';
 import db from '../../lib/db';
 
-import { faCalendar, faMapPin, faUserCircle } from '@fortawesome/pro-solid-svg-icons'
+import { faCalendar, faMapPin, faUserCircle } from '@fortawesome/pro-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
@@ -21,12 +21,11 @@ export interface position {
   closeDateFull: Date,
 }
 
-
 const Offers: NextPage = (props: any) => {
   const { offersData } = props;
- 
+
   return (
-    <Layout page='offers' >    
+    <Layout page='offers' >
       <Head>
         <title>The Devs Space</title>
         <link rel="icon" href="/favicon.ico" />
@@ -35,7 +34,7 @@ const Offers: NextPage = (props: any) => {
         <h1 className="max-w-7xl mx-auto lg:px-7 md:space-x-10 text-5xl font-extralight font-sans text-indigo-500">
           For Companies
         </h1>
-       
+
         <div className="overflow-hidden bg-white shadow sm:rounded-md mt-3">
           <ul role="list" className="divide-y divide-gray-200">
             {offersData.map((position: position) => (
@@ -75,11 +74,11 @@ const Offers: NextPage = (props: any) => {
           </ul>
         </div>
       </div>
-      
-    </Layout> 
 
-  )
-}
+    </Layout>
+
+  );
+};
 
 export const getStaticProps = async () => {
   const offers = await db.collection('offers').orderBy('created', 'desc').get();
@@ -90,8 +89,8 @@ export const getStaticProps = async () => {
   return {
     props: { offersData },
     revalidate: 10
-  }
-}
+  };
+};
 
 export default Offers;
 
