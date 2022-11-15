@@ -1,25 +1,26 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Layout from '../components/layout'
+import type { NextPage } from 'next';
+import Head from 'next/head';
+import Layout from '../components/layout';
+import HeroCard, { iHeroCard } from '../components/shared/HeroCard';
 
 const Home: NextPage = () => {
-  
+
+  const data: iHeroCard = {
+    title: 'We Rock the World',
+    subtitle: 'We shape the future'
+  };
+
   return (
-    <Layout page='home'>    
+    <Layout page='home'>
       <Head>
         <title>The Devs Space</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <h1 className="text-6xl font-semibold text-white">
-        Welcome to{' '}
-        <a className="text-violet-100 font-extralight" href="https://nextjs.org">
-          remoteu.org
-        </a>
-      </h1>
-    </Layout> 
+      <HeroCard data={data} ></HeroCard>
+    </Layout>
 
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

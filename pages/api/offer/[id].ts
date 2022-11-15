@@ -1,4 +1,4 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
+import type { NextApiRequest, NextApiResponse } from 'next';
 
 import db from '../../../lib/db';
 
@@ -25,7 +25,7 @@ export default async (
             await db.collection('offers').doc(id).delete();
         }
         res.status(200).end();
-    } catch (e) {
+    } catch (_error) {
         res.status(400).end();
     }
-}
+};

@@ -15,10 +15,10 @@ type user = {
     isAnonymous: boolean
     lastLoginAt: string
     photoURL: string
-    stsTokenManager: { 
+    stsTokenManager: {
         refreshToken: string
-        accessToken: string 
-        expirationTime: number 
+        accessToken: string
+        expirationTime: number
     }
     uid: string
 }
