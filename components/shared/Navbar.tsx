@@ -5,93 +5,47 @@ import { faConnectdevelop, faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { useAuth } from '../../context/AuthContext'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
-    BookmarkAltIcon,
-    BriefcaseIcon,
-    ChartBarIcon,
-    CheckCircleIcon,
-    CursorClickIcon,
-    DesktopComputerIcon,
-    GlobeAltIcon,
-    InformationCircleIcon,
     MenuIcon,
-    NewspaperIcon,
-    OfficeBuildingIcon,
     PhoneIcon,
-    PlayIcon,
-    ShieldCheckIcon,
-    UserGroupIcon,
-    ViewGridIcon,
     XIcon,
 } from '@heroicons/react/outline'
-import { ChevronDownIcon, PaperAirplaneIcon, WifiIcon } from '@heroicons/react/solid'
+import { ChevronDownIcon, WifiIcon } from '@heroicons/react/solid'
 import Link from 'next/link'
-import { faClose, faStarshipFreighter } from '@fortawesome/pro-solid-svg-icons';
+import { faClose, faHouseLaptop, faEarthAfrica, faEye, faHandFist } from '@fortawesome/pro-solid-svg-icons';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../../lib/firebase';
 import { useTranslation } from 'react-i18next';
 
-
 const solutions = [
     {
-        name: 'Engajamento',
-        description: 'Hoje em dia milhares de empresas buscam profissionais Brasileiros.',
+        name: 'Everywhere',
+        description: 'We deep believe the work should fit our lives, so we stands for remotely work.',
         href: '#',
-        icon: CursorClickIcon,
+        icon: faHouseLaptop,
     },
     {
-        name: 'Trabalho Remoto',
-        description: 'Hoje o mundo está mais conectado do que nunca, e fronteiras não importam mais.',
+        name: 'Everyone',
+        description: 'We are focus into shape a new future, cause together we can, join us, be the flow.',
         href: '#',
-        icon: WifiIcon,
+        icon: faHandFist,
     },
     { 
-        name: 'Segurança', 
-        description: "Nossa base é constante avaliada por uma comunidade de devs e entusiastas de tecnologia.", 
+        name: 'Transparency', 
+        description: "We believe in the world of transparency, cause solid relations are based on truth.", 
         href: '#', 
-        icon: ShieldCheckIcon 
+        icon: faEye 
     },
     {
-        name: 'Integrações',
-        description: "Conecte-se com todo um universo de empresas e profissonais dispostos a mudar o mundo.",
+        name: 'Connection',
+        description: "Our goal is connect people through the technology, being a bridge for the future.",
         href: '#',
-        icon: ViewGridIcon,
+        icon: faEarthAfrica,
     },
 ]
 const callsToAction = [
-    { name: 'Watch Demo', href: '#', icon: PlayIcon },
-    { name: 'Contact Sales', href: '+55333333333', icon: PhoneIcon },
+    { name: 'Contact Us', href: '+34658021441', icon: PhoneIcon },
 ]
-const company = [
-    { name: 'About', href: '#', icon: InformationCircleIcon },
-    { name: 'Customers', href: '#', icon: OfficeBuildingIcon },
-    { name: 'Press', href: '#', icon: NewspaperIcon },
-    { name: 'Careers', href: '#', icon: BriefcaseIcon },
-    { name: 'Privacy', href: '#', icon: ShieldCheckIcon },
-]
-const resources = [
-    { name: 'Community', href: '#', icon: UserGroupIcon },
-    { name: 'Partners', href: '#', icon: GlobeAltIcon },
-    { name: 'Guides', href: '#', icon: BookmarkAltIcon },
-    { name: 'Webinars', href: '#', icon: DesktopComputerIcon },
-]
-const blogPosts = [
-    {
-        id: 1,
-        name: 'Boost your conversion rate',
-        href: '#',
-        preview: 'Eget ullamcorper ac ut vulputate fames nec mattis pellentesque elementum. Viverra tempor id mus.',
-        imageUrl:
-            'https://images.unsplash.com/photo-1558478551-1a378f63328e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2849&q=80',
-    },
-    {
-        id: 2,
-        name: 'How to use search engine optimization to drive traffic to your site',
-        href: '#',
-        preview: 'Eget ullamcorper ac ut vulputate fames nec mattis pellentesque elementum. Viverra tempor id mus.',
-        imageUrl:
-            'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2300&q=80',
-    },
-]
+
 
 function classNames(...classes: any) {
     return classes.filter(Boolean).join(' ')
@@ -115,11 +69,11 @@ function Navbar({page}: {page: string}) {
     
     return (
         <Popover className="relative bg-white">
-            <div className="absolute inset-0 shadow z-30 pointer-events-none" aria-hidden="true" />
+            <div className="absolute inset-0 z-30 pointer-events-none" aria-hidden="true" />
             <div className="relative z-20">
-                <div className="max-w-7xl mx-auto flex justify-between items-center px-4 py-5 sm:px-6 sm:py-4 lg:px-7 md:justify-start md:space-x-10">
+                <div className="max-w-7xl mx-auto flex px-4 sm:px-6 lg:px-7 md:justify-between md:space-x-10">
                     <Link href={'/'}>
-                        <a className="flex font-bold text-indigo-600 text-lg group">
+                        <a className="flex align-middle items-center font-bold text-indigo-600 group content-center">
                             <span className="sr-only">RemoteU.org</span>
                             <FontAwesomeIcon icon={faConnectdevelop} className="h-7 w-7 mr-1 group-hover:animate-spin-fast" aria-hidden="true" />
                             {t('common.remoteuOrg')}
@@ -131,15 +85,24 @@ function Navbar({page}: {page: string}) {
                             <MenuIcon className="h-6 w-6" aria-hidden="true" />
                         </Popover.Button>
                     </div>
-                    <div className="hidden md:flex-1 md:flex md:items-center md:justify-between">
-                        <Popover.Group as="nav" className="flex space-x-10 align-middle items-center">
+                    <div className="hidden font-normal text-sm md:flex md:ml-5">
+                        <Popover.Group as="nav" className="flex align-middle items-center">
                             <Link href={'/professional/list'}>
                                 <a className={
                                     `
-                                    text-base
-                                    font-medium
-                                     px-3
-                                    ${ page == 'professionals' ? "text-indigo-600 hover:text-indigo-900" : "text-gray-500 hover:text-gray-900" }
+                                    text-xs
+                                    border-l
+                                    p-6
+                                    ${page == 'professionals' ? `
+                                            bg-indigo-600
+                                            text-white  
+                                            border-indigo-300` :
+                                        `
+                                            text-gray-500 
+                                            hover:bg-indigo-600 
+                                            hover:text-white 
+                                            hover:border-indigo-300`
+                                        }
                                     `
                                 }>
                                     {t('navBar.devs')}
@@ -147,12 +110,21 @@ function Navbar({page}: {page: string}) {
                             </Link>
                             <Link href={'/offer/list'}>
                                 <a className={
-                                    `
-                                    text-base
-                                    font-medium
-                                     px-3
-                                    ${page == 'offers' ? "text-indigo-600 hover:text-indigo-900" : "text-gray-500 hover:text-gray-900" }
-                                    `
+                                `
+                                    text-xs
+                                    border-l
+                                    p-6
+                                    ${page == 'offers' ? `
+                                        bg-indigo-600
+                                        text-white  
+                                        border-indigo-300` : 
+                                        `
+                                        text-gray-500 
+                                        hover:bg-indigo-600 
+                                        hover:text-white 
+                                        hover:border-indigo-300`
+                                    }
+                                `
                                 }>
                                     {t('navBar.companies')}
                                 </a>
@@ -161,16 +133,26 @@ function Navbar({page}: {page: string}) {
                                 {({ open }) => (
                                     <>
                                         <Popover.Button
-                                            className={classNames(
-                                                open ? 'text-gray-900' : 'text-gray-500',
-                                                'px-3 group bg-white rounded-md inline-flex items-center text-base font-medium border-2 border-transparent hover:text-gray-900 focus:text-white focus:bg-indigo-600 focus:outline-none focus:border-indigo-600 focus:rounded-md'
-                                            )}
+                                            className={classNames(`
+                                                group
+                                                border-x 
+                                                text-xs
+                                                p-6
+                                                inline-flex  
+                                                text-gray-500 
+                                                hover:bg-indigo-600
+                                                hover:text-white 
+                                                hover:border-indigo-300
+                                                focus:bg-indigo-600
+                                                focus:text-white
+                                                focus:border-indigo-300
+                                            `)}
                                         >
                                             <span>{t('common.about')}</span>
                                             <ChevronDownIcon
                                                 className={classNames(
                                                     open ? 'text-gray-600' : 'text-gray-400',
-                                                    'ml-2 h-5 w-5 group-hover:text-gray-500 group-focus:text-white'
+                                                    'ml-2 h-4 w-5 group-hover:text-white group-focus:text-white'
                                                 )}
                                                 aria-hidden="true"
                                             />
@@ -196,7 +178,9 @@ function Navbar({page}: {page: string}) {
                                                             <div className="flex md:h-full lg:flex-col">
                                                                 <div className="flex-shrink-0">
                                                                     <span className="inline-flex items-center justify-center h-10 w-10 rounded-md bg-indigo-500 text-white sm:h-12 sm:w-12">
-                                                                        <item.icon className="h-6 w-6" aria-hidden="true" />
+                                                                        <FontAwesomeIcon
+                                                                            icon={item.icon}
+                                                                            className="fa-thin h-6 w-6 group-hover:animate-spin" aria-hidden="true" />
                                                                     </span>
                                                                 </div>
                                                                 <div className="ml-4 md:flex-1 md:flex md:flex-col md:justify-between lg:ml-0 lg:mt-4">
@@ -234,25 +218,24 @@ function Navbar({page}: {page: string}) {
                                 )}
                             </Popover>
                         </Popover.Group>
-                        <div className="flex items-center md:ml-12">
+                        <div className="flex items-center">
                             <button
                                 onClick={!loading && isLogged ? logout : login}
                                 className={`
                                     group
-                                    ml-8
-                                    px-4
-                                    py-2
-                                    border
-                                    border-transparent
-                                    rounded-md
-                                    shadow-sm
+                                    px-6
                                     text-base
                                     font-medium
-                                    text-white
-                                    ${!loading && isLogged ? "bg-red-600 hover:bg-red-700" : "bg-indigo-600 hover:bg-indigo-700"}
+                                    ${!loading && isLogged ? `
+                                        text-red-600 
+                                        hover:text-red-500
+                                        border-solid ` : 
+                                        `text-indigo-600 
+                                        hover:text-indigo-400
+                                    `}
                                 `}
                             >
-                            {!loading && isLogged ? 
+                                {!loading && isLogged ? 
                                     <span className='
                                         inline-flex
                                         items-center
@@ -267,7 +250,6 @@ function Navbar({page}: {page: string}) {
                                         inline-flex
                                         items-center
                                         justify-center 
-                                        group-hover:text-yellow-400
                                         group-hover:animate-pulse" >
                                     <FontAwesomeIcon
                                         icon={faGoogle}
@@ -321,7 +303,9 @@ function Navbar({page}: {page: string}) {
                                                 className="-m-3 flex items-center p-3 rounded-lg hover:bg-gray-50"
                                             >
                                                 <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-indigo-500 text-white sm:h-12 sm:w-12">
-                                                    <item.icon className="h-6 w-6" aria-hidden="true" />
+                                                    <FontAwesomeIcon
+                                                        icon={item.icon}
+                                                        className="fa-thin h-6 w-6 group-hover:animate-spin" aria-hidden="true" />
                                                 </div>
                                                 <div className="ml-4 text-base font-medium text-gray-900">{item.name}</div>
                                             </a>
