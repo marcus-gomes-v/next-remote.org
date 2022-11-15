@@ -13,6 +13,7 @@ import Link from 'next/link';
 import { faClose, faHouseLaptop, faEarthAfrica, faEye, faHandFist } from '@fortawesome/pro-solid-svg-icons';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../../lib/firebase';
+import { useTranslation } from 'react-i18next';
 
 const solutions = [
     {
@@ -49,11 +50,9 @@ function classNames(...classes: any) {
 }
 
 function Navbar({page}: {page: string}) {
-
+    const { t } = useTranslation();
     const { login, logout } = useAuth();
-
     const [loading, setLoading] = useState(false);
-
     const [ isLogged, setIsLogged ] = useState(false);
 
     useEffect( () => {
@@ -75,7 +74,7 @@ function Navbar({page}: {page: string}) {
                         <a className="flex align-middle items-center font-bold text-indigo-600 group content-center">
                             <span className="sr-only">RemoteU.org</span>
                             <FontAwesomeIcon icon={faConnectdevelop} className="h-7 w-7 mr-1 group-hover:animate-spin-fast" aria-hidden="true" />
-                            RemoteU.Org
+                            {t('common.remoteuOrg')}
                         </a>
                     </Link>
                     <div className='-mr-2 -my-2 md:hidden'>
@@ -104,7 +103,7 @@ function Navbar({page}: {page: string}) {
                                         }
                                     `
                                 }>
-                                    DEVELOPERS
+                                    {t('navBar.devs')}
                                 </a>
                             </Link>
                             <Link href={'/offer/list'}>
@@ -125,7 +124,7 @@ function Navbar({page}: {page: string}) {
                                     }
                                 `
                                 }>
-                                    COMPANIES
+                                    {t('navBar.companies')}
                                 </a>
                             </Link>
                             <Popover>
@@ -147,7 +146,7 @@ function Navbar({page}: {page: string}) {
                                                 focus:border-indigo-300
                                             `)}
                                         >
-                                            ABOVE THE NOISE
+                                            <span>{t('common.about')}</span>
                                             <ChevronDownIcon
                                                 className={classNames(
                                                     open ? 'text-gray-600' : 'text-gray-400',
@@ -187,9 +186,10 @@ function Navbar({page}: {page: string}) {
                                                                         <p className='text-base font-medium text-gray-900'>{item.name}</p>
                                                                         <p className='mt-1 text-sm text-gray-500'>{item.description}</p>
                                                                     </div>
-                                                                    {/* <p className="mt-2 text-sm font-medium text-indigo-600 lg:mt-4">
-                                                                        Saiba mais <span aria-hidden="true">&rarr;</span>
-                                                                    </p> */}
+                                                                    <p className="mt-2 text-sm font-medium text-indigo-600 lg:mt-4">
+                                                                        {t('common.knowMore')}
+                                                                        <span aria-hidden="true">&rarr;</span>
+                                                                    </p>
                                                                 </div>
                                                             </div>
                                                         </a>
@@ -238,23 +238,23 @@ function Navbar({page}: {page: string}) {
                                         inline-flex
                                         items-center
                                         justify-center'>
-                                        <FontAwesomeIcon
-                                            icon={faClose}
-                                            className="w-4 h-4 mr-2 group-hover:animate-spin" />
-                                        Logout
-                                    </span>
-                                    :
+                                    <FontAwesomeIcon
+                                        icon={faClose}
+                                        className="w-4 h-4 mr-2 group-hover:animate-spin" />
+                                    {t('login.logout')}
+                                </span>
+                                :
                                     <span className="
                                         inline-flex
                                         items-center
                                         justify-center
                                         group-hover:animate-pulse" >
-                                        <FontAwesomeIcon
-                                            icon={faGoogle}
-                                            className="w-4 h-4 mr-2" />
-                                        Login
-                                    </span>
-                                }
+                                    <FontAwesomeIcon
+                                        icon={faGoogle}
+                                        className="w-4 h-4 mr-2" />
+                                    {t('login.google')}
+                                </span>
+                            }
                             </button>
                         </div>
                     </div>
@@ -312,14 +312,14 @@ function Navbar({page}: {page: string}) {
                                 </nav>
                             </div>
                         </div>
-                        <div className='py-6 px-5'>
-                            <div className='grid grid-cols-2 gap-4'>
-                                <a href='#' className='rounded-md text-base font-medium text-gray-900 hover:text-gray-700'>
-                                    Devs
+                        <div className="py-6 px-5">
+                            <div className="grid grid-cols-2 gap-4">
+                                <a href="#" className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700">
+                                    {t('navBar.devs')}
                                 </a>
 
-                                <a href='#' className='rounded-md text-base font-medium text-gray-900 hover:text-gray-700'>
-                                    Empresas
+                                <a href="#" className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700">
+                                    {t('navBar.companies')}
                                 </a>
 
                             </div>
@@ -329,7 +329,7 @@ function Navbar({page}: {page: string}) {
                                     className='w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700'
                                 >
                                     <FontAwesomeIcon icon={faGoogle} />
-                                    Sign up
+                                    {t('common.signUp')}
                                 </a>
                             </div>
                         </div>
