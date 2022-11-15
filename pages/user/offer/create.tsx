@@ -5,7 +5,7 @@ import Layout from '../../../components/layout';
 import { useAuth } from '../../../context/AuthContext';
 import UploadFile from '../../../components/storage/UploadFile';
 import { Transition } from '@headlessui/react';
-import { faCheckCircle, faXmark } from '@fortawesome/pro-solid-svg-icons'
+import { faCheckCircle, faXmark } from '@fortawesome/pro-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Offer = () => {
@@ -13,11 +13,11 @@ const Offer = () => {
 
     const [imgUrl, setImgUrl] = useState('');
 
-    const [show, setShow] = useState(false)
+    const [show, setShow] = useState(false);
 
     const setImageFromChild = (imgString: string) => {
-        setImgUrl(imgString)
-    }
+        setImgUrl(imgString);
+    };
 
     const [content, setContent] = useState({
         title: undefined,
@@ -29,12 +29,12 @@ const Offer = () => {
         closeDate: undefined,
         closeDateFull: undefined,
 
-    })
+    });
 
     const onChange = (e: any) => {
         const { value, name } = e.target;
         setContent(prevState => ({ ...prevState, [name]: value }));
-    }
+    };
 
     const onSubmit = async () => {
         const author = {
@@ -42,32 +42,32 @@ const Offer = () => {
             email: useSession.email,
             uid: useSession.uid,
             imageUrl: useSession.photoURL,
-        }
+        };
 
         const headers = {
             'Content-Type': 'application/json',
             'Authorization': 'lerigo'
-        }
+        };
 
         const { title, body, type, location, department, companyName } = content as any;
-        await axios.post('/api/offer', 
-            { 
-                title, 
-                slug: `${dashify(title)}-${new Date().getUTCFullYear()}-${new Date().getUTCMonth()}-${new Date().getUTCDay()}`, 
-                body, 
+        await axios.post('/api/offer',
+            {
+                title,
+                slug: `${dashify(title)}-${new Date().getUTCFullYear()}-${new Date().getUTCMonth()}-${new Date().getUTCDay()}`,
+                body,
                 imgUrl,
                 type,
                 location,
                 department,
                 companyName,
                 closeDate: new Date(),
-                closeDateFull: new Date(), 
+                closeDateFull: new Date(),
                 author,
             }, {
             headers: headers
         });
         setShow(true);
-    }
+    };
     return (
         <Layout page='offer-new'>
             <form className="space-y-6" action="javascript:void(0)" method="POST">
@@ -86,7 +86,7 @@ const Offer = () => {
                                         Company Name
                                     </label>
                                     <div className="mt-1 flex rounded-md shadow-sm">
-                                       
+
                                         <input
                                             type="text"
                                             name="company-name"
@@ -288,7 +288,7 @@ const Offer = () => {
                                             type="button"
                                             className="inline-flex rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                                             onClick={() => {
-                                                setShow(false)
+                                                setShow(false);
                                             }}
                                         >
                                             <span className="sr-only">Close</span>
