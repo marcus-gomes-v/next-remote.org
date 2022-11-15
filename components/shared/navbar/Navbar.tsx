@@ -1,8 +1,9 @@
 import { Fragment, useEffect, useState } from 'react';
 import { Popover, Transition } from '@headlessui/react';
 import { faConnectdevelop, faGoogle } from '@fortawesome/free-brands-svg-icons';
-import { useAuth } from '../../context/AuthContext';
+import { auth } from '../../../lib/firebase';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useAuth } from '../../../context/AuthContext';
 import {
     MenuIcon,
     PhoneIcon,
@@ -12,8 +13,9 @@ import { ChevronDownIcon, WifiIcon } from '@heroicons/react/solid';
 import Link from 'next/link';
 import { faClose, faHouseLaptop, faEarthAfrica, faEye, faHandFist } from '@fortawesome/pro-solid-svg-icons';
 import { onAuthStateChanged } from 'firebase/auth';
-import { auth } from '../../lib/firebase';
+import NavBarLink from './components/NavBarLink';
 import { useTranslation } from 'react-i18next';
+
 
 const solutions = [
     {
@@ -83,50 +85,18 @@ function Navbar({page}: {page: string}) {
                             <MenuIcon className='h-6 w-6' aria-hidden='true' />
                         </Popover.Button>
                     </div>
-                    <div className="hidden font-normal text-sm md:flex md:ml-5">
-                        <Popover.Group as="nav" className="flex align-middle items-center">
-                            <Link href={'/professional/list'}>
-                                <a className={
-                                    `
-                                    text-xs
-                                    border-l
-                                    p-6
-                                    ${page == 'professionals' ? `
-                                            bg-indigo-600
-                                            text-white  
-                                            border-indigo-300` :
-                                        `
-                                            text-gray-500 
-                                            hover:bg-indigo-600 
-                                            hover:text-white 
-                                            hover:border-indigo-300`
-                                        }
-                                    `
-                                }>
-                                    {t('navBar.devs')}
-                                </a>
-                            </Link>
-                            <Link href={'/offer/list'}>
-                                <a className={
-                                `
-                                    text-xs
-                                    border-l
-                                    p-6
-                                    ${page == 'offers' ? `
-                                        bg-indigo-600
-                                        text-white  
-                                        border-indigo-300` :
-                                        `
-                                        text-gray-500 
-                                        hover:bg-indigo-600 
-                                        hover:text-white 
-                                        hover:border-indigo-300`
-                                    }
-                                `
-                                }>
-                                    {t('navBar.companies')}
-                                </a>
-                            </Link>
+                    <div className="hidden md:flex-1 md:flex md:items-center md:justify-between">
+                        <Popover.Group as="nav" className="flex space-x-10 align-middle items-center">
+                            <NavBarLink
+                                link='/professional/list'
+                                text={t('navBar.devs')}
+                                highlight={page === 'professionals'}
+                            />
+                            <NavBarLink
+                                link='/offer/list'
+                                text={t('navBar.companies')}
+                                highlight={page === 'offers'}
+                            />
                             <Popover>
                                 {({ open }) => (
                                     <>
@@ -314,14 +284,16 @@ function Navbar({page}: {page: string}) {
                         </div>
                         <div className="py-6 px-5">
                             <div className="grid grid-cols-2 gap-4">
-                                <a href="#" className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700">
-                                    {t('navBar.devs')}
-                                </a>
-
-                                <a href="#" className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700">
-                                    {t('navBar.companies')}
-                                </a>
-
+                                <NavBarLink
+                                    link='/professional/list'
+                                    text={t('navBar.devs')}
+                                    classOverwrite='rounded-md text-base font-medium text-gray-900 hover:text-gray-700'
+                                />
+                                <NavBarLink
+                                    link='/offer/list'
+                                    text={t('navBar.companies')}
+                                    classOverwrite='rounded-md text-base font-medium text-gray-900 hover:text-gray-700'
+                                />
                             </div>
                             <div className='mt-6'>
                                 <a

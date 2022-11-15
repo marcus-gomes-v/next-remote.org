@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import Footer from './shared/Footer';
-import Navbar from './shared/Navbar';
+import Navbar from './shared/navbar/Navbar';
 
 export default function Layout({ children, page }: { children: React.ReactNode, page: string }) {
   const siteTitle = 'Remoteu.org';
