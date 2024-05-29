@@ -24,7 +24,7 @@ export interface position {
 const Professionals: NextPage = (props: any) => {
   const { t } = useTranslation();
   const { professionalsData } = props;
-  
+
 
   return (
     <Layout page='companies' >
@@ -109,6 +109,3 @@ export const getStaticProps = async () => {
 };
 
 export default Professionals;
-
-
-

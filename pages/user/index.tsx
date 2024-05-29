@@ -19,7 +19,7 @@ const LoggedIn = () => {
       }
       setLoading(false);
     };
-    
+
     fetchUser();
   }, []);
 
@@ -47,7 +47,7 @@ const LoggedIn = () => {
 
       <div className="max-w-4xl mx-auto py-10">
         <div className="text-2xl font-semibold mb-4">
-          {t('pages.authenticated.title', {name: user?.displayName})} 
+          {t('pages.authenticated.title', {name: user?.displayName})}
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="flex flex-col items-center p-6 shadow-lg rounded-lg border border-gray-200">

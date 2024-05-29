@@ -17,13 +17,11 @@ const About: NextPage = () => {
         }</title>
         <link rel='icon' href='/favicon.ico' />
       </Head>
-
       <div className='max-w-7xl mx-auto px-4 py-5 sm:px-6 sm:py-4 lg:px-7 md:space-x-10'>
         <h1 className='max-w-7xl mx-auto lg:px-7 md:space-x-10 text-5xl font-extralight font-sans text-indigo-500'>
           {t('pages.about.title')}
         </h1>
       </div>
-      
     </Layout>
   );
 };

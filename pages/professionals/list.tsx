@@ -24,7 +24,7 @@ export interface position {
 const Companies: NextPage = (props: any) => {
   const { t } = useTranslation();
   const { companiesData } = props;
-  
+
 
   return (
     <Layout page='professionals' >
@@ -79,7 +79,7 @@ const Companies: NextPage = (props: any) => {
                     </div>
                   </a>
                 </li>
-              )) : 
+              )) :
               <div className="px-4 py-4 sm:px-6">
                 <p className="text-sm font-medium text-indigo-600">
                   {t('pages.companies.notFound')}
@@ -108,6 +108,3 @@ export const getStaticProps = async () => {
 };
 
 export default Companies;
-
-
-

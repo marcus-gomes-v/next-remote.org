@@ -46,7 +46,7 @@ function Navbar({page}: {page: string}) {
             icon: faInfoCircle,
             active: page === 'about'
         }
-    ]
+    ];
 
     useEffect( () => {
         setLoading(true);
@@ -97,10 +97,10 @@ function Navbar({page}: {page: string}) {
                                     text-base
                                     font-light
                                     ${!loading && isLogged ? `
-                                        text-red-600 
+                                        text-red-600
                                         hover:text-red-500
                                         border-solid ` :
-                                        `text-indigo-600 
+                                        `text-indigo-600
                                         hover:text-indigo-400
                                     `}
                                 `}

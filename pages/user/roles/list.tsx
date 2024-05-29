@@ -5,7 +5,7 @@ import Layout from '../../../components/layout';
 import { useTranslation } from 'react-i18next';  // Importe useTranslation
 
 const List = () => {
-  const { t } = useTranslation(); 
+  const { t } = useTranslation();
   const [entries, setEntries] = useState([]);
   const [loading, setLoading] = useState(true);
 
