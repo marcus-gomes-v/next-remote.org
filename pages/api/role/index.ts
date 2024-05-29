@@ -11,15 +11,15 @@ export default async (
 ) => {
     try {
         const { slug } = req.body;
-        const offers = await db.collection('offers').get();
-        const offersData = offers.docs.map(entry => entry.data());
+        const roles = await db.collection('roles').get();
+        const rolesData = roles.docs.map(entry => entry.data());
 
         console.log(req.body);
 
-        if (offersData.some(entry => entry.slug === slug)) {
+        if (rolesData.some(entry => entry.slug === slug)) {
             res.status(400).end();
         } else {
-            const { id } = await db.collection('offers').add({
+            const { id } = await db.collection('roles').add({
                 ...req.body,
                 created: new Date().toISOString(),
             });

@@ -12,7 +12,7 @@ const Post = (props: any) => {
     } else {
         if (entry) {
             return (
-                <Layout page='offers-detail'>
+                <Layout page='roles-detail'>
                     <div>
                         <h1>{entry.title}</h1>
                         <h4>{entry.created}</h4>
@@ -29,8 +29,8 @@ const Post = (props: any) => {
 };
 
 export const getStaticPaths = async () => {
-    const offers = await db.collection('offers').get();
-    const paths = offers.docs.map(entry => ({
+    const roles = await db.collection('roles').get();
+    const paths = roles.docs.map(entry => ({
         params: {
             slug: entry.data().slug
         }
@@ -43,7 +43,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context: any) => {
     const { slug } = context.params;
-    const res = await db.collection('offers').where('slug', '==', slug).get();
+    const res = await db.collection('roles').where('slug', '==', slug).get();
     const entry = res.docs.map(entry => entry.data());
     if (entry.length) {
         return {
